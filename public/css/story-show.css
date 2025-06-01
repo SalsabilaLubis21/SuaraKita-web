@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glow-color: rgba(102, 126, 234, 0.4);
+    --text-color: #333333;
+    --light-bg: #f8f9fa;
+    --comment-bg: #f1f2f9;
+    --purple-accent: #7f53ac;
+}
+
+/* Animated Background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+    background-color: var(--light-bg);
+}
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 20s infinite ease-in-out;
+}
+
+.bg-orb:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #667eea, #764ba2);
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+}
+
+.bg-orb:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #f093fb, #f5576c);
+    top: 20%;
+    right: -150px;
+    animation-delay: 5s;
+}
+
+.bg-orb:nth-child(3) {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #4facfe, #00f2fe);
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 10s;
+}
+
+.bg-orb:nth-child(4) {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #a8edea, #fed6e3);
+    top: 60%;
+    right: 20%;
+    animation-delay: 15s;
+}
+
+/* Glass Morphism Grid */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    animation: gridPulse 4s ease-in-out infinite;
+}
+
+.story-hero {
+    position: relative;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0 0 32px 32px;
+    margin-bottom: 40px;
+    animation: fadeIn 1s;
+    transform-style: preserve-3d;
+}
+.story-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 15, 35, 0.8) 0%,
+        rgba(26, 26, 46, 0.6) 100%
+    );
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+.story-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    max-width: 700px;
+    margin: 4rem auto 5rem auto;
+    animation: fadeInUp 1.2s;
+    transform-style: preserve-3d;
+}
+.story-hero-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateZ(30px);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+.story-hero-meta {
+    font-family: "Inter", sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.2rem;
+    transform: translateZ(20px);
+}
+
+/* Styling untuk meta divider */
+.meta-divider {
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 0 4px;
+}
+
+/* Perubahan pada story-container untuk menyesuaikan dengan gambar */
+.story-container {
+    font-family: "Inter", sans-serif;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin-top: -35px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+.story-content {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 2.2rem;
+    line-height: 1.7;
+    word-break: break-word;
+}
+
+#comments {
+    margin-top: 2.5rem;
+    border-top: 1px solid #eaeaea;
+    padding-top: 1.5rem;
+}
+
+.comments-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--purple-accent);
+}
+
+.list-group-item {
+    background: var(--comment-bg);
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 18px 20px;
+    color: var(--text-color);
+}
+
+.comment-meta {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.comment-text {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.alert-success {
+    background: #e8f5e9;
+    border: none;
+    color: #2e7d32;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+}
+
+.form-label {
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-control {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    color: var(--text-color);
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background: #ffffff;
+    border-color: var(--purple-accent);
+    box-shadow: 0 0 0 0.2rem rgba(127, 83, 172, 0.25);
+    color: var(--text-color);
+}
+
+.btn-primary {
+    background: var(--purple-accent);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 10px 28px;
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #6a4491;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(127, 83, 172, 0.4);
+}
+
+@media (max-width: 768px) {
+    .story-hero {
+        min-height: 180px;
+        border-radius: 0 0 18px 18px;
+        padding-top: 35px;
+        padding-bottom: 20px;
+    }
+
+    .story-hero-content {
+        margin-top: 55px;
+    }
+
+    .story-hero-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .story-hero-meta {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+        padding: 0 10px;
+        margin-top: 10px;
+        background-color: rgba(127, 83, 172, 0.2);
+        border-radius: 30px;
+        padding: 6px 10px;
+        overflow-x: auto;
+    }
+
+    .story-hero-meta > div {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 3px !important;
+        white-space: nowrap;
+    }
+
+    .story-hero-meta span {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 400;
+    }
+
+    .story-hero-meta strong {
+        font-size: 0.7rem;
+        color: white;
+        font-weight: 600;
+    }
+
+    .meta-divider {
+        display: block !important;
+        height: 16px;
+        margin: 0 2px;
+    }
+
+    .story-hero-meta > div:last-child {
+        padding-right: 4px;
+    }
+
+    .story-container {
+        padding: 20px 15px;
+        margin-top: -30px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) translateZ(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(30px);
+    }
+}
+@keyframes titleGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 40px rgba(240, 147, 251, 0.8));
+    }
+}
+@keyframes parallaxFloat {
+    0%,
+    100% {
+        transform: translateZ(0) scale(1);
+    }
+    50% {
+        transform: translateZ(20px) scale(1.02);
+    }
+}
+@keyframes gridPulse {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}

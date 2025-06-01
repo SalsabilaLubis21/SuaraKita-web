@@ -1,0 +1,797 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glow-color: rgba(102, 126, 234, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    perspective: 1000px;
+    position: relative;
+}
+
+/* Animated Background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 20s infinite ease-in-out;
+}
+
+.bg-orb:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #667eea, #764ba2);
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+}
+
+.bg-orb:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #f093fb, #f5576c);
+    top: 20%;
+    right: -150px;
+    animation-delay: 5s;
+}
+
+.bg-orb:nth-child(3) {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #4facfe, #00f2fe);
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 10s;
+}
+
+.bg-orb:nth-child(4) {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #a8edea, #fed6e3);
+    top: 60%;
+    right: 20%;
+    animation-delay: 15s;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+    }
+    25% {
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+    }
+    50% {
+        transform: translateY(20px) translateX(-20px) scale(0.9);
+    }
+    75% {
+        transform: translateY(-10px) translateX(15px) scale(1.05);
+    }
+}
+
+/* Glass Morphism Grid */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    animation: gridPulse 4s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Hero Section with 3D Elements */
+.article-banner {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    /* Memberikan konteks tumpukan sendiri untuk elemen-elemen di dalamnya */
+    /* Ini penting untuk memastikan z-index di dalamnya bekerja sesuai harapan */
+    isolation: isolate; /* <-- Tambahan Penting */
+    z-index: 0; /* Pastikan banner tidak di atas elemen lain secara tidak sengaja */
+}
+
+.article-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 15, 35, 0.8) 0%,
+        rgba(26, 26, 46, 0.6) 100%
+    );
+    z-index: 1;
+    pointer-events: none; /* TETAPKAN INI: Pastikan overlay tidak mencegat klik */
+}
+
+.article-banner img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.4) saturate(1.2);
+    transform-style: preserve-3d;
+    animation: parallaxFloat 20s ease-in-out infinite;
+    z-index: 0; /* Pastikan gambar di bawah overlay dan konten */
+}
+
+@keyframes parallaxFloat {
+    0%,
+    100% {
+        transform: translateZ(0) scale(1);
+    }
+    50% {
+        transform: translateZ(20px) scale(1.02);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* TETAPKAN INI: Pastikan konten hero berada di atas overlay */
+    text-align: center;
+    max-width: 900px;
+    padding: 2rem;
+    transform-style: preserve-3d;
+    /* Memberikan konteks tumpukan sendiri untuk tombol di dalamnya */
+    isolation: isolate; /* <-- Tambahan Penting */
+    width: 100%; /* Pastikan hero-content mengambil lebar yang cukup */
+    height: 100%; /* Pastikan hero-content mengambil tinggi yang cukup */
+    display: flex; /* Untuk memposisikan konten di tengah dengan lebih baik */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Pastikan tidak ada properti yang membuat elemen ini menjadi pointer-events: none; */
+    pointer-events: auto; /* <-- Tambahan Penting, memastikan hero-content menerima event */
+}
+
+.hero-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 800;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateZ(50px);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+    pointer-events: none; /* <-- Tambahan Penting: Teks tidak perlu diklik, biarkan klik lewat ke tombol di bawahnya jika tumpang tindih */
+}
+
+@keyframes titleGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 40px rgba(240, 147, 251, 0.8));
+    }
+}
+
+.hero-caption {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+    transform: translateZ(30px);
+    animation: fadeInUp 1s ease-out 0.5s both;
+    pointer-events: none; /* <-- Tambahan Penting: Teks tidak perlu diklik, biarkan klik lewat ke tombol di bawahnya jika tumpang tindih */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) translateZ(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(30px);
+    }
+}
+
+/* **THE MAIN FIX**: Hero Button */
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.2rem 3rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(40px);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer; /* Pastikan cursor adalah pointer */
+    z-index: 3; /* <-- Disempurnakan: Z-index yang tinggi di dalam hero-content */
+    pointer-events: auto; /* <-- Tambahan Penting: Pastikan tombol ini menerima event klik */
+}
+
+/* Pseudo-element for background effect - keep pointer-events: none; here */
+.hero-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-gradient);
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+    z-index: -1; /* Keep behind the main button content */
+    pointer-events: none; /* TETAPKAN INI: Pastikan pseudo-element tidak mencegat klik pada tombol utama */
+}
+
+.hero-button:hover::before {
+    opacity: 1;
+}
+
+.hero-button:hover {
+    transform: translateZ(60px) translateY(-5px);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer; /* Ensure cursor remains pointer on hover */
+}
+
+/* Main Content */
+main {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    isolation: isolate; /* Pastikan main content adalah konteks tumpukan baru */
+}
+
+/* Section Headers with 3D Effect */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.section-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transform: translateZ(20px);
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+    transform: translateZ(10px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+/* 3D Card Grid System */
+.articles-grid,
+.stories-grid,
+.comments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+    margin-bottom: 4rem;
+    isolation: isolate; /* Penting untuk setiap grid */
+}
+
+/* Enhanced 3D Cards */
+.educational-article-card,
+.story-card,
+.comment-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: translateZ(0) rotateX(0) rotateY(0);
+    z-index: 1; /* Memberikan z-index pada setiap kartu */
+    isolation: isolate; /* Penting untuk setiap kartu */
+}
+
+.educational-article-card::before,
+.story-card::before,
+.comment-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: -1;
+    pointer-events: none; /* Pseudo-element tidak mencegat klik */
+}
+
+.educational-article-card:hover::before,
+.story-card:hover::before,
+.comment-item:hover::before {
+    opacity: 0.1;
+}
+
+.educational-article-card:hover,
+.story-card:hover,
+.comment-item:hover {
+    transform: translateZ(30px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 50px var(--glow-color);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Article Cards */
+.educational-article-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.6s ease;
+    filter: brightness(0.8) saturate(1.2);
+}
+
+.educational-article-card:hover .educational-article-image {
+    transform: translateZ(20px) scale(1.05);
+    filter: brightness(1) saturate(1.4);
+}
+
+.educational-article-content {
+    padding: 2rem;
+}
+
+.story-card,
+.comment-item {
+    padding: 2rem;
+}
+
+.educational-article-title,
+.story-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    transform: translateZ(10px);
+}
+
+.educational-article-date,
+.story-meta,
+.comment-date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.educational-article-excerpt,
+.story-excerpt,
+.comment-content {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1rem;
+    transform: translateZ(5px);
+}
+
+/* Enhanced Buttons for "Read More" and "View All" */
+.story-readmore,
+.btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+    cursor: pointer;
+    z-index: 2; /* Z-index untuk tombol ini, relatif terhadap parent stacking context */
+    pointer-events: auto; /* Pastikan tombol ini menerima event klik */
+}
+
+.btn-view-all {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+}
+
+.story-readmore::before,
+.btn-view-all::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gradient);
+    transition: left 0.6s ease;
+    z-index: -1;
+    pointer-events: none; /* Pseudo-element tidak mencegat klik */
+}
+
+.story-readmore:hover::before,
+.btn-view-all:hover::before {
+    left: 0;
+}
+
+.story-readmore:hover,
+.btn-view-all:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(79, 172, 254, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.story-readmore::after,
+.btn-view-all::after {
+    content: "→";
+    transition: transform 0.3s ease;
+    pointer-events: none; /* Pseudo-element tidak mencegat klik */
+}
+
+.story-readmore:hover::after,
+.btn-view-all:hover::after {
+    transform: translateX(5px);
+}
+
+/* Comment Special Styling */
+.comment-item::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    font-size: 4rem;
+    color: var(--glow-color);
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    transform: translateZ(10px);
+}
+
+.comment-author {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.comment-content {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.comment-additional {
+    padding: 1rem 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid var(--accent-gradient);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    transform: translateZ(10px);
+}
+
+/* Section Intro Text */
+.section-intro {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer Styling */
+.site-footer {
+    background: rgba(17, 25, 40, 0.75);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.footer-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+.footer-about {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    background: var(--primary-gradient);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .articles-grid,
+    .stories-grid,
+    .comments-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .articles-grid,
+    .stories-grid,
+    .comments-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .educational-article-content,
+    .story-card,
+    .comment-item {
+        padding: 1.5rem;
+    }
+
+    .hero-content {
+        padding: 1rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .site-footer {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        text-align: center;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gradient);
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.loading-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
