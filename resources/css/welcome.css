@@ -691,17 +691,31 @@ main {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .article-banner {
-
         height: auto;
-        min-height: 500px; 
+        min-height: 500px;
         
+        transform-style: flat;
+        isolation: auto;   
+        z-index: 0;
     }
+
+    .article-banner img {
+       
+        transform-style: flat; 
+        animation: none; 
+        z-index: 0; 
+    }
+
+
     
 
     .hero-content {
-        padding: 1.5rem; /* Sesuaikan padding */
+        position: relative; 
+        z-index: 5; 
+        padding: 1.5rem;
         height: auto;
     }
+
     .hero-title {
         font-size: clamp(2.5rem, 7vw, 6rem);
     }
