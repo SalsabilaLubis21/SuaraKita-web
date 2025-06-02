@@ -102,7 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
             modalOverlay.style.width = "100vw";
             modalOverlay.style.height = "100vh";
             modalOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-            modalOverlay.style.backdropFilter = "blur(10px)";
+            
+            // --- PERBAIKAN: Tambahkan prefix -webkit-backdrop-filter untuk modalOverlay ---
+            modalOverlay.style.webkitBackdropFilter = "blur(10px)"; 
+            modalOverlay.style.backdropFilter = "blur(10px)"; 
+            // ----------------------------------------------------------------------------------
+            
             modalOverlay.style.display = "flex";
             modalOverlay.style.justifyContent = "center";
             modalOverlay.style.alignItems = "center";
@@ -111,7 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Modal box with glassmorphism
             const modalBox = document.createElement("div");
             modalBox.style.background = "rgba(255, 255, 255, 0.1)";
+            
+            // --- PERBAIKAN: Tambahkan prefix -webkit-backdrop-filter untuk modalBox ---
+            modalBox.style.webkitBackdropFilter = "blur(20px)"; 
             modalBox.style.backdropFilter = "blur(20px)";
+            // -------------------------------------------------------------------------
+            
             modalBox.style.borderRadius = "24px";
             modalBox.style.padding = "2.5rem 3rem";
             modalBox.style.maxWidth = "450px";
@@ -144,7 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const btnLogin = document.createElement("button");
             btnLogin.textContent = "Login";
             btnLogin.style.background = "rgba(255, 255, 255, 0.1)";
-            btnLogin.style.backdropFilter = "blur(10px)";
+            
+            // --- PERBAIKAN: Tambahkan prefix -webkit-backdrop-filter untuk btnLogin ---
+            btnLogin.style.webkitBackdropFilter = "blur(10px)"; 
+            btnLogin.style.backdropFilter = "blur(10px)"; 
+            // -----------------------------------------------------------------------------
+            
             btnLogin.style.border = "1px solid rgba(255, 255, 255, 0.2)";
             btnLogin.style.color = "white";
             btnLogin.style.padding = "0.8rem 2rem";
@@ -173,7 +188,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const btnAnonymous = document.createElement("button");
             btnAnonymous.textContent = "Continue as Anonymous";
             btnAnonymous.style.background = "rgba(255, 255, 255, 0.05)";
-            btnAnonymous.style.backdropFilter = "blur(10px)";
+            
+            // --- PERBAIKAN: Tambahkan prefix -webkit-backdrop-filter untuk btnAnonymous ---
+            btnAnonymous.style.webkitBackdropFilter = "blur(10px)"; 
+            btnAnonymous.style.backdropFilter = "blur(10px)"; 
+            // ---------------------------------------------------------------------------------
+            
             btnAnonymous.style.border = "1px solid rgba(255, 255, 255, 0.1)";
             btnAnonymous.style.color = "rgba(255, 255, 255, 0.8)";
             btnAnonymous.style.padding = "0.8rem 2rem";
