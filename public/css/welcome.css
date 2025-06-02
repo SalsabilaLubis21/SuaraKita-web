@@ -650,57 +650,6 @@ main {
 }
 
 .footer-about {
-    font-family: "Space Grotesk", "Inter", sans-serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    background:  rgba(255, 255, 255, 0.8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
-    text-align: left;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.75rem;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-    position: relative;
-}
-
-.footer-links a:hover {
-    color: #ffffff;
-    transform: translateX(5px);
-}
-
-.footer-links a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    transition: width 0.3s ease;
-}
-
-.footer-links a:hover::after {
-    width: 100%;
-}
-
-.footer-about {
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -741,6 +690,29 @@ main {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .article-banner {
+
+        height: auto;
+        min-height: 500px; 
+        
+    }
+    
+
+    .hero-content {
+        padding: 1.5rem; /* Sesuaikan padding */
+        height: auto;
+    }
+    .hero-title {
+        font-size: clamp(2.5rem, 7vw, 6rem);
+    }
+    .hero-caption {
+        font-size: 1.1rem;
+    }
+    .btn-view-all {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
     .articles-grid,
     .stories-grid,
     .comments-container {
@@ -760,6 +732,17 @@ main {
         padding: 2rem 1rem;
     }
 
+    .article-banner {
+
+        height: auto;
+        min-height: 450px; 
+        
+    }
+
+    .hero-content {
+        padding: 1rem;
+    }
+      
     .articles-grid,
     .stories-grid,
     .comments-container {
@@ -773,9 +756,6 @@ main {
         padding: 1.5rem;
     }
 
-    .hero-content {
-        padding: 1rem;
-    }
 
     .footer-container {
         grid-template-columns: 1fr;
@@ -788,10 +768,25 @@ main {
 }
 
 @media (max-width: 640px) {
-    .hero-button {
-        padding: 1rem 2rem;
-        font-size: 1rem;
+
+    .article-banner {
+        min-height: 400px; 
+        
     }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 5rem); 
+        margin-bottom: 0.8rem;
+    }
+    .hero-caption {
+        font-size: 1rem; 
+        margin-bottom: 1.5rem;
+    }
+    .btn-view-all {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
 
     .section-title {
         text-align: center;
