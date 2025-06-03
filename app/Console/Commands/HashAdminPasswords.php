@@ -18,7 +18,7 @@ class HashAdminPasswords extends Command
 
         foreach ($admins as $admin) {
             try {
-                $this->info("Processing admin ID {$admin->id} with password: {$admin->password}");
+                $this->info("Processing admin ID {$admin->id}"); // Removed password from log
                 // Force hash all passwords regardless of length
                 $hashed = Hash::make($admin->password);
                 DB::table('admins')->where('id', $admin->id)->update(['password' => $hashed]);
