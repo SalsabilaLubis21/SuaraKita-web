@@ -7,7 +7,6 @@
     --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-/* Base Styles */
 body {
     background-color: #0f172a;
     color: #e2e8f0;
@@ -80,7 +79,6 @@ body {
     }
 }
 
-/* Grid Overlay */
 .grid-overlay {
     position: fixed;
     top: 0;
@@ -259,7 +257,6 @@ body {
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Modern Cards */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -277,13 +274,13 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    transition: none !important; /* Disable transition */
+    transition: none !important;
 }
 
 .modern-card:hover {
-    transform: none !important; /* Disable hover transform */
-    box-shadow: var(--card-shadow) !important; /* Keep original shadow */
-    border-color: var(--glass-border) !important; /* Keep original border */
+    transform: none !important;
+    box-shadow: var(--card-shadow) !important;
+    border-color: var(--glass-border) !important;
 }
 
 @keyframes slideInUp {
@@ -428,7 +425,6 @@ body {
     transform: translateZ(5px);
 }
 
-/* FIXED READ MORE BUTTON */
 .read-more-btn {
     color: white !important;
     text-decoration: none !important;

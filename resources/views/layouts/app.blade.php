@@ -48,19 +48,19 @@
             .navbar-nav.ms-auto {
                 position: absolute;
                 top: 0.5rem;
-                right: 0; /* Adjusted right to 0 for better symmetry */
+                right: 0; 
                 background: transparent;
-                padding: 0 0.5rem; /* Added horizontal padding */
+                padding: 0 0.5rem; 
                 z-index: 1050;
                 flex-direction: row !important;
                 gap: 0.75rem !important;
-                justify-content: flex-end !important; /* Changed from space-between to flex-end */
-                width: auto !important; /* Changed from 100% to auto */
-                max-width: none !important; /* Removed max-width */
+                justify-content: flex-end !important; 
+                width: auto !important; 
+                max-width: none !important; 
             }
             .navbar-nav.ms-auto .nav-item {
-                margin: 0 0.5rem !important; /* Added horizontal margin */
-                flex-grow: 0; /* Removed flex-grow */
+                margin: 0 0.5rem !important; 
+                flex-grow: 0; 
                 text-align: center;
             }
             .container.position-relative {

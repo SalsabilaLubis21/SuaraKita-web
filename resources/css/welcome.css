@@ -124,7 +124,6 @@ body {
     }
 }
 
-/* Hero Section with 3D Elements */
 .article-banner {
     position: relative;
     height: 100vh;
@@ -133,10 +132,8 @@ body {
     justify-content: center;
     overflow: hidden;
     transform-style: preserve-3d;
-    /* Memberikan konteks tumpukan sendiri untuk elemen-elemen di dalamnya */
-    /* Ini penting untuk memastikan z-index di dalamnya bekerja sesuai harapan */
-    isolation: isolate; /* <-- Tambahan Penting */
-    z-index: 0; /* Pastikan banner tidak di atas elemen lain secara tidak sengaja */
+    isolation: isolate;
+    z-index: 0;
 }
 
 .article-banner::before {
@@ -152,7 +149,7 @@ body {
         rgba(26, 26, 46, 0.6) 100%
     );
     z-index: 1;
-    pointer-events: none; /* TETAPKAN INI: Pastikan overlay tidak mencegat klik */
+    pointer-events: none;
 }
 
 .article-banner img {
@@ -164,7 +161,7 @@ body {
     filter: brightness(0.4) saturate(1.2);
     transform-style: preserve-3d;
     animation: parallaxFloat 20s ease-in-out infinite;
-    z-index: 0; /* Pastikan gambar di bawah overlay dan konten */
+    z-index: 0;
 }
 
 @keyframes parallaxFloat {
@@ -179,21 +176,21 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 2; /* TETAPKAN INI: Pastikan konten hero berada di atas overlay */
+    z-index: 2;
     text-align: center;
     max-width: 900px;
     padding: 2rem;
     transform-style: preserve-3d;
-    /* Memberikan konteks tumpukan sendiri untuk tombol di dalamnya */
-    isolation: isolate; /* <-- Tambahan Penting */
-    width: 100%; /* Pastikan hero-content mengambil lebar yang cukup */
-    height: 100%; /* Pastikan hero-content mengambil tinggi yang cukup */
-    display: flex; /* Untuk memposisikan konten di tengah dengan lebih baik */
+
+    isolation: isolate;
+    width: 100%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Pastikan tidak ada properti yang membuat elemen ini menjadi pointer-events: none; */
-    pointer-events: auto; /* <-- Tambahan Penting, memastikan hero-content menerima event */
+
+    pointer-events: auto;
 }
 
 .hero-title {
@@ -209,7 +206,7 @@ body {
     transform: translateZ(50px);
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     animation: titleGlow 3s ease-in-out infinite alternate;
-    pointer-events: none; /* <-- Tambahan Penting: Teks tidak perlu diklik, biarkan klik lewat ke tombol di bawahnya jika tumpang tindih */
+    pointer-events: none;
 }
 
 @keyframes titleGlow {
@@ -229,7 +226,7 @@ body {
     letter-spacing: 1px;
     transform: translateZ(30px);
     animation: fadeInUp 1s ease-out 0.5s both;
-    pointer-events: none; /* <-- Tambahan Penting: Teks tidak perlu diklik, biarkan klik lewat ke tombol di bawahnya jika tumpang tindih */
+    pointer-events: none;
 }
 
 @keyframes fadeInUp {
@@ -243,7 +240,6 @@ body {
     }
 }
 
-/* **THE MAIN FIX**: Hero Button */
 .hero-button {
     display: inline-flex;
     align-items: center;
@@ -262,12 +258,11 @@ body {
     transform: translateZ(40px);
     position: relative;
     overflow: hidden;
-    cursor: pointer; /* Pastikan cursor adalah pointer */
-    z-index: 3; /* <-- Disempurnakan: Z-index yang tinggi di dalam hero-content */
-    pointer-events: auto; /* <-- Tambahan Penting: Pastikan tombol ini menerima event klik */
+    cursor: pointer;
+    z-index: 3;
+    pointer-events: auto;
 }
 
-/* Pseudo-element for background effect - keep pointer-events: none; here */
 .hero-button::before {
     content: "";
     position: absolute;
@@ -280,8 +275,8 @@ body {
     background: var(--primary-gradient);
     transition: opacity 0.3s ease;
     will-change: opacity;
-    z-index: -1; /* Keep behind the main button content */
-    pointer-events: none; /* TETAPKAN INI: Pastikan pseudo-element tidak mencegat klik pada tombol utama */
+    z-index: -1;
+    pointer-events: none;
 }
 
 .hero-button:hover::before {
@@ -292,7 +287,7 @@ body {
     transform: translateZ(60px) translateY(-5px);
     box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
     border-color: rgba(255, 255, 255, 0.4);
-    cursor: pointer; /* Ensure cursor remains pointer on hover */
+    cursor: pointer;
 }
 
 /* Main Content */
@@ -302,7 +297,7 @@ main {
     padding: 4rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
-    isolation: isolate; /* Pastikan main content adalah konteks tumpukan baru */
+    isolation: isolate;
 }
 
 /* Section Headers with 3D Effect */
@@ -349,10 +344,9 @@ main {
     gap: 2rem;
     perspective: 1000px;
     margin-bottom: 4rem;
-    isolation: isolate; /* Penting untuk setiap grid */
+    isolation: isolate;
 }
 
-/* Enhanced 3D Cards */
 .educational-article-card,
 .story-card,
 .comment-item {
@@ -367,8 +361,8 @@ main {
     overflow: hidden;
     transform-style: preserve-3d;
     transform: translateZ(0) rotateX(0) rotateY(0);
-    z-index: 1; /* Memberikan z-index pada setiap kartu */
-    isolation: isolate; /* Penting untuk setiap kartu */
+    z-index: 1;
+    isolation: isolate;
 }
 
 .educational-article-card::before,
@@ -384,7 +378,7 @@ main {
     opacity: 0;
     transition: opacity 0.6s ease;
     z-index: -1;
-    pointer-events: none; /* Pseudo-element tidak mencegat klik */
+    pointer-events: none;
 }
 
 .educational-article-card:hover::before,
@@ -477,8 +471,8 @@ main {
     overflow: hidden;
     margin-top: 1rem;
     cursor: pointer;
-    z-index: 2; /* Z-index untuk tombol ini, relatif terhadap parent stacking context */
-    pointer-events: auto; /* Pastikan tombol ini menerima event klik */
+    z-index: 2;
+    pointer-events: auto;
 }
 
 .btn-view-all {
@@ -497,7 +491,7 @@ main {
     background: var(--accent-gradient);
     transition: left 0.6s ease;
     z-index: -1;
-    pointer-events: none; /* Pseudo-element tidak mencegat klik */
+    pointer-events: none;
 }
 
 .story-readmore:hover::before,
@@ -516,7 +510,7 @@ main {
 .btn-view-all::after {
     content: "→";
     transition: transform 0.3s ease;
-    pointer-events: none; /* Pseudo-element tidak mencegat klik */
+    pointer-events: none;
 }
 
 .story-readmore:hover::after,
@@ -693,25 +687,21 @@ main {
     .article-banner {
         height: auto;
         min-height: 500px;
-        
+
         transform-style: flat;
-        isolation: auto;   
+        isolation: auto;
         z-index: 0;
     }
 
     .article-banner img {
-       
-        transform-style: flat; 
-        animation: none; 
-        z-index: 0; 
+        transform-style: flat;
+        animation: none;
+        z-index: 0;
     }
 
-
-    
-
     .hero-content {
-        position: relative; 
-        z-index: 5; 
+        position: relative;
+        z-index: 5;
         padding: 1.5rem;
         height: auto;
     }
@@ -747,16 +737,14 @@ main {
     }
 
     .article-banner {
-
         height: auto;
-        min-height: 450px; 
-        
+        min-height: 450px;
     }
 
     .hero-content {
         padding: 1rem;
     }
-      
+
     .articles-grid,
     .stories-grid,
     .comments-container {
@@ -770,7 +758,6 @@ main {
         padding: 1.5rem;
     }
 
-
     .footer-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -782,25 +769,22 @@ main {
 }
 
 @media (max-width: 640px) {
-
     .article-banner {
-        min-height: 400px; 
-        
+        min-height: 400px;
     }
 
     .hero-title {
-        font-size: clamp(2rem, 6vw, 5rem); 
+        font-size: clamp(2rem, 6vw, 5rem);
         margin-bottom: 0.8rem;
     }
     .hero-caption {
-        font-size: 1rem; 
+        font-size: 1rem;
         margin-bottom: 1.5rem;
     }
     .btn-view-all {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
     }
-
 
     .section-title {
         text-align: center;
